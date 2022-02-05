@@ -213,7 +213,7 @@ func getModulesByTutorId(tutorId string) []ModuleDetails2 {
 func main() {
 	//environment variables
 	//setup for local testing
-	os.Setenv("PORT", "9061")
+	os.Setenv("BACKEND_PORT", "9061")
 	os.Setenv("ORIGIN_ALLOWED", "*")
 
 	// Where ORIGIN_ALLOWED is like `scheme://dns[:port]`, or `*` (insecure)
@@ -226,8 +226,8 @@ func main() {
 	router.HandleFunc("/module/v1/list", listModules).Methods("GET")       //List Modules information
 	router.HandleFunc("/module/v1/details/{moduleCode}", getModuleDetails) //get Modules information
 	router.HandleFunc("/module/v1/modules/{tutorId}", getModulesByTutor)   //get Modules by tutorid
-	fmt.Printf(`Listening at port %s`, os.Getenv("PORT"))
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), handlers.CORS(originsOk, headersOk, methodsOk)(router)))
+	fmt.Printf(`Listening at port %s`, os.Getenv("BACKEND_PORT"))
+	log.Fatal(http.ListenAndServe(":"+os.Getenv("BACKEND_PORT"), handlers.CORS(originsOk, headersOk, methodsOk)(router)))
 }
 
 //Helper functions

@@ -1,16 +1,16 @@
 version: '3.8'
 
 services:
-  # frontend:
-  #   image: h30jz07/module-vue
-  #   container_name: 'module-vue'
-  #   build: 
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #    - 9060:9060
-  #   networks:
-  #    - default
+  frontend:
+    image: h30jz07/module-vue
+    container_name: 'module-vue'
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+    - 9060:9060
+    networks:
+    - default
 
   backend:
     image: h30jz07/module-backend
