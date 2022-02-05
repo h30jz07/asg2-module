@@ -1,4 +1,4 @@
-FROM node:16.12.0-alpine3.12
+FROM node:lts-alpine
 
 # install simple http server for serving static content
 RUN npm install -g http-server
@@ -19,4 +19,4 @@ COPY . .
 RUN npm run build
 
 EXPOSE 9060
-CMD [ "http-server", "dist" ]
+CMD [ "http-server", "-p 9060", "dist" ]

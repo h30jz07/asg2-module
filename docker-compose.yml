@@ -11,6 +11,8 @@ services:
     - 9060:9060
     networks:
     - default
+    env_file:
+      - .env.production
 
   backend:
     image: h30jz07/module-backend
@@ -23,7 +25,7 @@ services:
     networks:
      - default
     env_file:
-      - ./backend/.env
+      - .env.production
 
 networks:
   default:
