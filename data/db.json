@@ -1,0 +1,73 @@
+{
+  "modules": [
+    {
+      "modulecode": "ADB",
+      "modulename": "Advanced Databases",
+      "synopsis": "Learn Database Now",
+      "learningobjective": "Configure MYSQL"
+    },
+    {
+      "modulecode": "CM",
+      "modulename": "Computing Math",
+      "synopsis": "Learn Math",
+      "learningobjective": "UNION INTERSEC"
+    }
+  ],
+  "students": [
+    {
+      "moduleCode": "ADB",
+      "enrolledStudents": ["s10195174g", "s10123456a", "s12345678b"]
+    },
+    {
+      "moduleCode": "CM",
+      "enrolledStudents": ["s36900069g", "s20223456a", "s12345678b"]
+    }
+  ],
+  "ADB": [
+    {
+      "student_id": "s102312132",
+      "class_id": 321,
+      "semester": "3"
+    },
+    {
+      "student_id": "s101945183",
+      "class_id": 123,
+      "semester": "3"
+    },
+    {
+      "student_id": "s112345676",
+      "class_id": 369,
+      "semester": "3"
+    }
+  ],
+  "tutor": [
+    {
+      "tutorid": "2",
+      "modulecode": "CM",
+      "modulename": "Computing Math",
+      "synopsis": "Learn Math",
+      "learningobjective": "UNION INTERSEC"
+    },
+    {
+      "tutorid": "3",
+      "modulecode": "CM",
+      "modulename": "Computing Math",
+      "synopsis": "Learn Math",
+      "learningobjective": "UNION INTERSEC"
+    },
+    {
+      "tutorid": "1",
+      "modulecode": "ADB",
+      "modulename": "Advanced Databases",
+      "synopsis": "Learn Database Now",
+      "learningobjective": "Configure MYSQL"
+    },
+    {
+      "tutorid": "4",
+      "modulecode": "ADB",
+      "modulename": "Advanced Databases",
+      "synopsis": "Learn Database Now",
+      "learningobjective": "Configure MYSQL"
+    }
+  ]
+}
