@@ -6,7 +6,7 @@ The backend acts as a data access layer, communicating with other packages withi
 Originally, the backend was omitted because package 3.7 could act as a frontend as it only had view funtionality. Additionally, no database was required as data could be directly accessed from other packages in Edu-Fi. However, as a microservice, additional functionalities could come about that would create the need for a database. Thus, the backend microservice was created - to allow for elasticity of the Module Package's features, as well as act as a anti-corruption layer.
 
 ## Architecture Diagram
-![Application Architecture Diagram](Asg2_Architecture_Diagram.png)
+![Application Architecture Diagram](Asg2_Architecture_Diagram(Labeled).png)
 
 ## Link to container image
 [Link to frontend docker image](https://hub.docker.com/repository/docker/h30jz07/module-vue)
