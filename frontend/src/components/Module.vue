@@ -1,5 +1,5 @@
 <template>
-    <div  @click="toggleModule">
+    <div @click="toggleModule" class="info">
         <h2>{{ info.modulename }}</h2>
         <p>Module Code: {{ info.modulecode }}</p>
         <p>Synopsis: {{ info.synopsis }}</p>
@@ -26,4 +26,12 @@ export default {
 
 
 <style scoped>
+    .info p{
+        padding: 0 15%;
+        text-align: left;
+    }
+
+    .info {
+        color: #444;
+    }
 </style>

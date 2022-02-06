@@ -46,12 +46,13 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
     .module{
         background: #f4f4f4;
         padding: 20px;
         border-radius: 10px;
         margin: 10px auto;
+        width: 85%;
         max-width: 600px;
         cursor: pointer;
         color: #444;
@@ -66,9 +67,13 @@ export default {
         border: 1px solid grey;
         border-radius: 5px;
         height: 20px;
-        width: 90%;
-        padding: 2px 23px 2px 30px;
+        width: 85%;
+        max-width: 600px;
+        padding: 20px 23px 20px 30px;
         outline: 0;
         background-color: #f5f5f5;
+    }
+    h1 {
+        padding: 20px;
     }
 </style>

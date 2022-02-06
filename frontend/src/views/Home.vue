@@ -22,9 +22,9 @@ export default {
 </script>
 <style scoped>
 
-h1 {
-  border-bottom: 1px solid #ddd;
-  display: inline-block;
-  padding-bottom: 10px;
-}
+  h1 {
+    border-bottom: 1px solid #ddd;
+    display: inline-block;
+    padding: 50px;
+  }
 </style>

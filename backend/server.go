@@ -36,9 +36,10 @@ type EnrolledStudent struct {
 type AssignedTutor struct {
 	TutorId     int    `json:"tutor_id"`
 	TutorName   string `json:"name"`
-	ModuleCode  string `json:"modulecode"`
 	Email       string `json:"email"`
 	Description string `json:"descriptions"`
+	ModuleCode  string `json:"modulecode"`
+	ModuleId    string `json:"moduleid"`
 }
 
 type MoreDetails struct {
@@ -102,8 +103,9 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 		moduleDetails.Classes = getClasses(enrolledStudentsDetails)
 		//Get Assigned Tutors
 		moduleDetails.AssignedTutors = getAssignedTutors(moduleCode)
+		moduleId := moduleDetails.AssignedTutors[0].ModuleId
 
-		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/ratings.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleCode)
+		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/details.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleId)
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(moduleDetails)
 	}
@@ -193,10 +195,6 @@ func getModulesByTutorId(tutorId string) []ModuleDetailsTutor {
 }
 
 func main() {
-	//environment variables
-	//setup for local testing
-	os.Setenv("BACKEND_PORT", "9061")
-	os.Setenv("ORIGIN_ALLOWED", "*")
 
 	// Where ORIGIN_ALLOWED is like `scheme://dns[:port]`, or `*` (insecure)
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
