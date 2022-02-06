@@ -197,7 +197,7 @@ func getModulesByTutor(w http.ResponseWriter, r *http.Request) {
 func getModulesByTutorId(tutorId string) []ModuleDetailsTutor {
 	os.Setenv("HOST_URL", "localhost")
 	os.Setenv("MODULE_MANAGEMENT_PORT", "9141")
-	url := fmt.Sprintf("http://%s:%s/tutor?tutorid=%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), tutorId) //just for testing CHANGE WHEN AZZI UPDATE
+	url := fmt.Sprintf("http://%s:%s/tutor?tutor_id=%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), tutorId) //just for testing CHANGE WHEN AZZI UPDATE
 
 	//url := fmt.Sprintf("http://%s:%s/api/v1/module/alltutor/%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), tutorId) //update for production
 	var result []ModuleDetailsTutor
