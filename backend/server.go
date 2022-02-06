@@ -202,10 +202,10 @@ func main() {
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 
 	router := mux.NewRouter()
-	router.HandleFunc("/module/v1", health)                                //Health Check - database connectivity
-	router.HandleFunc("/module/v1/list", listModules).Methods("GET")       //List Modules information
-	router.HandleFunc("/module/v1/details/{moduleCode}", getModuleDetails) //get Modules information
-	router.HandleFunc("/module/v1/modules/{tutorId}", getModulesByTutor)   //get Modules by tutorid
+	router.HandleFunc("/module/v1", health)                                               //Health Check - database connectivity
+	router.HandleFunc("/module/v1/list", listModules).Methods("GET")                      //List Modules information
+	router.HandleFunc("/module/v1/details/{moduleCode}", getModuleDetails).Methods("GET") //get Modules information
+	router.HandleFunc("/module/v1/modules/{tutorId}", getModulesByTutor).Methods("GET")   //get Modules by tutorid
 	fmt.Printf(`Listening at port %s`, os.Getenv("BACKEND_PORT"))
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("BACKEND_PORT"), handlers.CORS(originsOk, headersOk, methodsOk)(router)))
 }

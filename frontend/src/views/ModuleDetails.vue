@@ -86,7 +86,7 @@ export default {
             .then(resp => resp.json())
             .then(data => {
               this.students = data.enrolled_students
-              this.tutors = data.assigned_tutors[0]
+              this.tutors = data.assigned_tutors
               this.classes = data.classes
               this.link = data.ratings_and_comments_url
             })
