@@ -36,7 +36,152 @@ Sample request
 ```
 Sample response
 ```
-    
+    [
+    {
+        "modulecode": "CM",
+        "modulename": "Computing Math",
+        "synopsis": "Learn Math",
+        "learningobjective": "UNION INTERSEC",
+        "classes": null,
+        "assigned_tutors": [
+            {
+                "tutor_id": 1,
+                "name": "Steve Jobs",
+                "email": "Yumin@gmail.com",
+                "descriptions": "rip",
+                "modulecode": "CM",
+                "moduleid": ""
+            },
+            {
+                "tutor_id": 3,
+                "name": "Wesley",
+                "email": "Yumin@gmail.com",
+                "descriptions": "This tutor is great",
+                "modulecode": "CM",
+                "moduleid": ""
+            }
+        ],
+        "enrolled_students": null
+    },
+    {
+        "modulecode": "CM",
+        "modulename": "Computing Math",
+        "synopsis": "Learn Math",
+        "learningobjective": "UNION INTERSEC",
+        "classes": null,
+        "assigned_tutors": [
+            {
+                "tutor_id": 1,
+                "name": "Steve Jobs",
+                "email": "Yumin@gmail.com",
+                "descriptions": "rip",
+                "modulecode": "CM",
+                "moduleid": ""
+            },
+            {
+                "tutor_id": 3,
+                "name": "Wesley",
+                "email": "Yumin@gmail.com",
+                "descriptions": "This tutor is great",
+                "modulecode": "CM",
+                "moduleid": ""
+            }
+        ],
+        "enrolled_students": null
+    },
+    {
+        "modulecode": "ADB",
+        "modulename": "Advanced Databases",
+        "synopsis": "Learn Database Now",
+        "learningobjective": "Configure MYSQL",
+        "classes": [
+            321,
+            123,
+            369
+        ],
+        "assigned_tutors": [
+            {
+                "tutor_id": 1,
+                "name": "Steve Jobs",
+                "email": "Yumin@gmail.com",
+                "descriptions": "rip",
+                "modulecode": "ADB",
+                "moduleid": ""
+            },
+            {
+                "tutor_id": 4,
+                "name": "Wesley",
+                "email": "Yumin@gmail.com",
+                "descriptions": "This tutor is great",
+                "modulecode": "ADB",
+                "moduleid": ""
+            }
+        ],
+        "enrolled_students": [
+            {
+                "student_id": "s102312132",
+                "class_id": 321,
+                "semester": "3"
+            },
+            {
+                "student_id": "s101945183",
+                "class_id": 123,
+                "semester": "3"
+            },
+            {
+                "student_id": "s112345676",
+                "class_id": 369,
+                "semester": "3"
+            }
+        ]
+    },
+    {
+        "modulecode": "ADB",
+        "modulename": "Advanced Databases",
+        "synopsis": "Learn Database Now",
+        "learningobjective": "Configure MYSQL",
+        "classes": [
+            321,
+            123,
+            369
+        ],
+        "assigned_tutors": [
+            {
+                "tutor_id": 1,
+                "name": "Steve Jobs",
+                "email": "Yumin@gmail.com",
+                "descriptions": "rip",
+                "modulecode": "ADB",
+                "moduleid": ""
+            },
+            {
+                "tutor_id": 4,
+                "name": "Wesley",
+                "email": "Yumin@gmail.com",
+                "descriptions": "This tutor is great",
+                "modulecode": "ADB",
+                "moduleid": ""
+            }
+        ],
+        "enrolled_students": [
+            {
+                "student_id": "s102312132",
+                "class_id": 321,
+                "semester": "3"
+            },
+            {
+                "student_id": "s101945183",
+                "class_id": 123,
+                "semester": "3"
+            },
+            {
+                "student_id": "s112345676",
+                "class_id": 369,
+                "semester": "3"
+            }
+        ]
+    }
+    ]
 ```
 
 ## Instructions for setting up and running microservices
