@@ -42,32 +42,52 @@
   ],
   "tutor": [
     {
-      "tutorid": "2",
+      "tutor_id": 1,
+      "name": "Steve Jobs",
+      "email": "Yumin@gmail.com",
+      "moduleid": 1,
+      "descriptions": "This tutor is gay ",
       "modulecode": "CM",
       "modulename": "Computing Math",
       "synopsis": "Learn Math",
-      "learningobjective": "UNION INTERSEC"
+      "learningobjective": "UNION INTERSEC",
+      "deleted": null
     },
     {
-      "tutorid": "3",
+      "tutor_id": 3,
+      "name": "Wesley",
+      "email": "Yumin@gmail.com",
+      "moduleid": 1,
+      "descriptions": "This tutor is not gay ",
       "modulecode": "CM",
       "modulename": "Computing Math",
       "synopsis": "Learn Math",
-      "learningobjective": "UNION INTERSEC"
+      "learningobjective": "UNION INTERSEC",
+      "deleted": null
     },
     {
-      "tutorid": "1",
+      "tutor_id": 1,
+      "name": "Steve Jobs",
+      "email": "Yumin@gmail.com",
+      "moduleid": 2,
+      "descriptions": "This tutor is gay ",
       "modulecode": "ADB",
       "modulename": "Advanced Databases",
       "synopsis": "Learn Database Now",
-      "learningobjective": "Configure MYSQL"
+      "learningobjective": "Configure MYSQL",
+      "deleted": null
     },
     {
-      "tutorid": "4",
+      "tutor_id": 4,
+      "name": "Wesley",
+      "email": "Yumin@gmail.com",
+      "moduleid": 2,
+      "descriptions": "This tutor is not gay ",
       "modulecode": "ADB",
       "modulename": "Advanced Databases",
       "synopsis": "Learn Database Now",
-      "learningobjective": "Configure MYSQL"
+      "learningobjective": "Configure MYSQL",
+      "deleted": null
     }
   ]
 }

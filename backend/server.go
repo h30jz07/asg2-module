@@ -34,8 +34,11 @@ type EnrolledStudent struct {
 }
 
 type AssignedTutor struct {
-	TutorId    string `json:"tutorid"`
-	ModuleCode string `json:"modulecode"`
+	TutorId     int    `json:"tutor_id"`
+	TutorName   string `json:"name"`
+	ModuleCode  string `json:"modulecode"`
+	Email       string `json:"email"`
+	Description string `json:"descriptions"`
 }
 
 type MoreDetails struct {
@@ -70,7 +73,10 @@ func listModules(w http.ResponseWriter, r *http.Request) {
 }
 
 func getAllModules() []ModuleDetails {
-	url := fmt.Sprintf(`http://%s:%s/api/v1/modules/`, os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"))
+	os.Setenv("HOST_URL", "localhost")
+	os.Setenv("MODULE_MANAGEMENT_PORT", "9141")
+	url := fmt.Sprintf(`http://%s:%s/modules`, os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"))
+	//url := fmt.Sprintf(`http://%s:%s/api/v1/modules/`, os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"))
 
 	var modules []ModuleDetails
 	if response, err := http.Get(url); err == nil {
@@ -85,6 +91,8 @@ func getAllModules() []ModuleDetails {
 
 //Get module details
 func getModuleDetails(w http.ResponseWriter, r *http.Request) {
+	os.Setenv("HOST_URL", "localhost")
+	os.Setenv("R_AND_C_PORT", "9040")
 	switch r.Method {
 	case "GET":
 		//Retrieve moduleCode from path param
@@ -107,7 +115,11 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 }
 
 func getEnrolledStudents(moduleCode string) []EnrolledStudent {
-	url := fmt.Sprintf("http://%s:%s/api/v1/allocations/module/%s", os.Getenv("HOST_URL"), os.Getenv("TIMETABLE_PORT"), moduleCode) //Update for production
+	os.Setenv("HOST_URL", "localhost")
+	os.Setenv("TIMETABLE_PORT", "9141")
+	url := fmt.Sprintf("http://%s:%s/%s", os.Getenv("HOST_URL"), os.Getenv("TIMETABLE_PORT"), moduleCode) //just for testing
+
+	//url := fmt.Sprintf("http://%s:%s/api/v1/allocations/module/%s", os.Getenv("HOST_URL"), os.Getenv("TIMETABLE_PORT"), moduleCode) //Update for production
 	if response, err := http.Get(url); err == nil {
 		defer response.Body.Close()
 		if body, _ := ioutil.ReadAll(response.Body); err == nil {
@@ -131,7 +143,11 @@ func getClasses(s []EnrolledStudent) []int {
 }
 
 func getAssignedTutors(moduleCode string) []AssignedTutor {
-	url := fmt.Sprintf("http://%s:%s/api/v1/module/tutor/%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), moduleCode) //update for production
+	os.Setenv("HOST_URL", "localhost")
+	os.Setenv("MODULE_MANAGEMENT_PORT", "9141")
+	url := fmt.Sprintf("http://%s:%s/tutor?modulecode=%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), moduleCode) //just for testing
+
+	//url := fmt.Sprintf("http://%s:%s/api/v1/module/tutor/%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), moduleCode) //update for production
 	if response, err := http.Get(url); err == nil {
 		defer response.Body.Close()
 		if body, _ := ioutil.ReadAll(response.Body); err == nil {
@@ -180,7 +196,7 @@ func getModulesByTutorId(tutorId string) []ModuleDetails2 {
 	//Endpoint from 3.4 not yet updated
 	os.Setenv("HOST_URL", "localhost")
 	os.Setenv("MODULE_MANAGEMENT_PORT", "9141")
-	//url := fmt.Sprintf("http://%s:%s/api/v1/module/tutor/%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), moduleCode) //update for production
+	//url := fmt.Sprintf("http://%s:%s/api/v1/module/alltutor/%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), tutorId) //update for production
 	url := fmt.Sprintf("http://%s:%s/tutor?tutorid=%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), tutorId) //just for testing CHANGE WHEN AZZI UPDATE
 	var result []ModuleDetails2
 	if response, err := http.Get(url); err == nil {
@@ -194,6 +210,10 @@ func getModulesByTutorId(tutorId string) []ModuleDetails2 {
 }
 
 func main() {
+	//environment variables
+	//setup for local testing
+	os.Setenv("BACKEND_PORT", "9061")
+	os.Setenv("ORIGIN_ALLOWED", "*")
 
 	// Where ORIGIN_ALLOWED is like `scheme://dns[:port]`, or `*` (insecure)
 	headersOk := handlers.AllowedHeaders([]string{"X-Requested-With"})
