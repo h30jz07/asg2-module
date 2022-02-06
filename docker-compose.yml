@@ -12,7 +12,7 @@ services:
     networks:
     - default
     env_file:
-      - .env.production
+      - .env
 
   backend:
     image: h30jz07/module-backend
@@ -25,7 +25,7 @@ services:
     networks:
      - default
     env_file:
-      - .env.production
+      - .env
 
 networks:
   default:
