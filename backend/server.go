@@ -67,8 +67,9 @@ func health(w http.ResponseWriter, r *http.Request) {
 func listModules(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 		modules := getAllModules()
-		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(modules)
 	}
 }
@@ -108,7 +109,8 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 		moduleId := moduleDetails.AssignedTutors[0].ModuleId
 
 		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/details.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleId)
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 		json.NewEncoder(w).Encode(moduleDetails)
 	}
 }
@@ -178,7 +180,8 @@ func getModulesByTutor(w http.ResponseWriter, r *http.Request) {
 
 			tutorModulesDetails = append(tutorModulesDetails, moduleDetails)
 		}
-		w.Header().Set("Content-Type", "application/json")
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 		json.NewEncoder(w).Encode(tutorModulesDetails)
 	}
 }
@@ -202,10 +205,10 @@ func main() {
 	methodsOk := handlers.AllowedMethods([]string{"GET", "HEAD", "POST", "PUT", "OPTIONS"})
 
 	router := mux.NewRouter()
-	router.HandleFunc("/module/v1", health)                                               //Health Check - database connectivity
-	router.HandleFunc("/module/v1/list", listModules).Methods("GET")                      //List Modules information
-	router.HandleFunc("/module/v1/details/{moduleCode}", getModuleDetails).Methods("GET") //get Modules information
-	router.HandleFunc("/module/v1/modules/{tutorId}", getModulesByTutor).Methods("GET")   //get Modules by tutorid
+	router.HandleFunc("/module/v1", health)                                                          //Health Check - database connectivity
+	router.HandleFunc("/module/v1/list", listModules).Methods("GET", "OPTIONS")                      //List Modules information
+	router.HandleFunc("/module/v1/details/{moduleCode}", getModuleDetails).Methods("GET", "OPTIONS") //get Modules information
+	router.HandleFunc("/module/v1/modules/{tutorId}", getModulesByTutor).Methods("GET", "OPTIONS")   //get Modules by tutorid
 	fmt.Printf(`Listening at port %s`, os.Getenv("BACKEND_PORT"))
 	log.Fatal(http.ListenAndServe(":"+os.Getenv("BACKEND_PORT"), handlers.CORS(originsOk, headersOk, methodsOk)(router)))
 }
