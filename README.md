@@ -119,9 +119,9 @@ Sample response
 ```
     git clone https://github.com/h30jz07/asg2-module.git
 ``` 
-2. Checkout to commit for local testing.
+2. Checkout to commit (f8bd5eaa) for local testing.
 ```
-    git checkout 62d8324e
+    git checkout f8bd5eaa
 ``` 
 3. Install npm dependencies for frontend.
 ```
