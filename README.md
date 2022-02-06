@@ -10,6 +10,7 @@ Originally, the backend was omitted because package 3.7 could act as a frontend 
 
 ## Link to container image
 [Link to frontend docker image](https://hub.docker.com/repository/docker/h30jz07/module-vue)
+
 [Link to backend docker image](https://hub.docker.com/repository/docker/h30jz07/module-backend)
 
 ## Module Microservice API Documentation
