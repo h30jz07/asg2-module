@@ -93,6 +93,7 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 	os.Setenv("R_AND_C_PORT", "9040")
 	switch r.Method {
 	case "GET":
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		//Retrieve moduleCode from path param
 		moduleCode := mux.Vars(r)["moduleCode"]
 
@@ -108,7 +109,6 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(moduleDetails.AssignedTutors)
 		moduleId := moduleDetails.AssignedTutors[0].ModuleId
 		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/details.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleId)
-		w.Header().Set("Access-Control-Allow-Origin", "*")
 		json.NewEncoder(w).Encode(moduleDetails)
 	}
 }
