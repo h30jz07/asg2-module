@@ -109,7 +109,15 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 		//Get Assigned Tutors
 		moduleDetails.AssignedTutors = getAssignedTutors(moduleCode)
 		fmt.Println(moduleDetails)
-		moduleId := moduleDetails.AssignedTutors[0].ModuleId
+
+		var moduleId string
+		if moduleDetails.AssignedTutors != nil {
+			moduleId = moduleDetails.AssignedTutors[0].ModuleId
+		} else {
+
+			moduleId = "0"
+		}
+
 		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/details.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleId)
 		json.NewEncoder(w).Encode(moduleDetails)
 	}
