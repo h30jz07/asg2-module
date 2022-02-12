@@ -83,6 +83,8 @@ func getAllModules() []ModuleDetails {
 			json.Unmarshal(body, &modules)
 			return modules
 		}
+	} else {
+		fmt.Println(err)
 	}
 	return nil
 }
@@ -124,6 +126,8 @@ func getEnrolledStudents(moduleCode string) []EnrolledStudent {
 
 			return result
 		}
+	} else {
+		fmt.Println(err)
 	}
 	return nil
 }
@@ -149,6 +153,8 @@ func getAssignedTutors(moduleCode string) []AssignedTutor {
 
 			return result
 		}
+	} else {
+		fmt.Println(err)
 	}
 	return nil
 }
@@ -193,6 +199,8 @@ func getModulesByTutorId(tutorId string) []ModuleDetailsTutor {
 		if body, _ := ioutil.ReadAll(response.Body); err == nil {
 			json.Unmarshal(body, &result)
 		}
+	} else {
+		fmt.Println(err)
 	}
 
 	return result
