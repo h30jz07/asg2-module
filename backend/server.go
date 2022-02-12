@@ -106,7 +106,6 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 		moduleDetails.Classes = getClasses(enrolledStudentsDetails)
 		//Get Assigned Tutors
 		moduleDetails.AssignedTutors = getAssignedTutors(moduleCode)
-		fmt.Println(moduleDetails.AssignedTutors)
 		moduleId := moduleDetails.AssignedTutors[0].ModuleId
 		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/details.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleId)
 		json.NewEncoder(w).Encode(moduleDetails)
@@ -115,6 +114,7 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 
 func getEnrolledStudents(moduleCode string) []EnrolledStudent {
 	url := fmt.Sprintf("http://%s:%s/api/v1/allocations/module/%s", os.Getenv("HOST_URL"), os.Getenv("TIMETABLE_PORT"), moduleCode) //Update for production
+	fmt.Println("Calling Get Enrolled Students from Timetable MS")
 	if response, err := http.Get(url); err == nil {
 		defer response.Body.Close()
 		if body, _ := ioutil.ReadAll(response.Body); err == nil {
@@ -139,6 +139,7 @@ func getClasses(s []EnrolledStudent) []int {
 
 func getAssignedTutors(moduleCode string) []AssignedTutor {
 	url := fmt.Sprintf("http://%s:%s/api/v1/module/tutor/%s", os.Getenv("HOST_URL"), os.Getenv("MODULE_MANAGEMENT_PORT"), moduleCode) //update for production
+	fmt.Println("Calling Get Assigned Tutors from Module Management MS")
 	if response, err := http.Get(url); err == nil {
 		defer response.Body.Close()
 		if body, _ := ioutil.ReadAll(response.Body); err == nil {
