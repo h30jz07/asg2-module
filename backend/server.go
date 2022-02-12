@@ -106,6 +106,7 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 		moduleDetails.Classes = getClasses(enrolledStudentsDetails)
 		//Get Assigned Tutors
 		moduleDetails.AssignedTutors = getAssignedTutors(moduleCode)
+		fmt.Println(moduleDetails)
 		moduleId := moduleDetails.AssignedTutors[0].ModuleId
 		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/details.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleId)
 		json.NewEncoder(w).Encode(moduleDetails)
