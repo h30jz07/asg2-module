@@ -10,6 +10,7 @@ Originally, the backend was omitted because package 3.7 could act as a frontend 
 
 ## Link to container image
 [Link to frontend docker image](https://hub.docker.com/repository/docker/h30jz07/module-vue)
+
 [Link to backend docker image](https://hub.docker.com/repository/docker/h30jz07/module-backend)
 
 ## Module Microservice API Documentation
@@ -125,13 +126,14 @@ Sample response
 ``` 
 3. Install npm dependencies for frontend.
 ```
-    cd asg2-module/frontend
+    cd frontend
     npm install -g json-server
     npm i
 ```    
 4. Run json-server for mock data.
+### Note: Run in git bash, windows powershell has some issues. 
 ```
-    json-server --watch data/db.json -p9141
+    json-server --watch ../data/db.json -p9141
 ```
 5. Open up a new terminal, then Run go backend.
 ```
