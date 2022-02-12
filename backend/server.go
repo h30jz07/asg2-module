@@ -68,7 +68,6 @@ func listModules(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 		modules := getAllModules()
 		json.NewEncoder(w).Encode(modules)
 	}
@@ -110,7 +109,6 @@ func getModuleDetails(w http.ResponseWriter, r *http.Request) {
 
 		moduleDetails.RAndCLink = fmt.Sprintf("http://%s:%s/Main/details.html?id=%stype=Module", os.Getenv("HOST_URL"), os.Getenv("R_AND_C_PORT"), moduleId)
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 		json.NewEncoder(w).Encode(moduleDetails)
 	}
 }
@@ -181,7 +179,6 @@ func getModulesByTutor(w http.ResponseWriter, r *http.Request) {
 			tutorModulesDetails = append(tutorModulesDetails, moduleDetails)
 		}
 		w.Header().Set("Access-Control-Allow-Origin", "*")
-		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 		json.NewEncoder(w).Encode(tutorModulesDetails)
 	}
 }
